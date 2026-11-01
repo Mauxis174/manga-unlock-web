@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Verificación de Descarga</title>
+  <!-- Telegram Mini Apps SDK -->
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <!-- Adsgram SDK -->
+  <script src="https://sad.adsgram.ai/js/sad.min.js"></script>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="app-container">
+    <div class="card">
+      <div class="card-header">
+        <h1 class="title">Verificación</h1>
+        <span id="progress-badge" class="progress-badge">0/2</span>
+      </div>
+
+      <p class="subtitle">
+        Completa los dos pasos rápidos a continuación para desbloquear tu acceso de descarga — sin pago requerido.
+      </p>
+
+      <div id="file-pill" class="file-pill hidden">
+        <span>📦 Archivo digital</span>
+        <span id="file-size-label" class="file-size-tag"></span>
+      </div>
+
+      <!-- Paso 1 -->
+      <div id="step-1" class="step-box step-active">
+        <div class="step-left">
+          <div id="step-1-circle" class="step-circle">1</div>
+          <div class="step-info">
+            <div class="step-title">Paso 1: Ver anuncio #1</div>
+            <div id="step-1-sub" class="step-sub">Toca para iniciar</div>
+          </div>
+        </div>
+        <div class="step-right">
+          <button id="step-1-btn" class="start-btn" type="button">Iniciar</button>
+          <span id="step-1-check" class="check-emoji hidden">✅</span>
+        </div>
+      </div>
+
+      <!-- Paso 2 -->
+      <div id="step-2" class="step-box step-locked">
+        <div class="step-left">
+          <div id="step-2-circle" class="step-circle">2</div>
+          <div class="step-info">
+            <div class="step-title">Paso 2: Ver anuncio #2</div>
+            <div id="step-2-sub" class="step-sub">Se desbloquea tras el paso 1</div>
+          </div>
+        </div>
+        <div class="step-right">
+          <button id="step-2-btn" class="start-btn" type="button" disabled>Iniciar</button>
+          <span id="step-2-check" class="check-emoji hidden">✅</span>
+        </div>
+      </div>
+
+      <!-- Botón principal de desbloqueo / descarga -->
+      <button id="claim-btn" class="claim-btn locked" type="button" disabled>
+        🔒 Completa los pasos para desbloquear
+      </button>
+
+      <!-- Mensajes de estado o error -->
+      <div id="status-box" class="status-box hidden"></div>
+
+      <!-- Botón auxiliar si el usuario nunca inició el bot en privado -->
+      <a id="open-bot-link" class="open-bot-btn hidden" href="#" target="_blank" rel="noopener">
+        🤖 Abrir Bot y pulsar Iniciar
+      </a>
+    </div>
+  </div>
+
+  <!-- Modal para modo de prueba (AD_PROVIDER=demo) -->
+  <div id="demo-ad-modal" class="ad-modal hidden">
+    <div class="ad-modal-content">
+      <div class="ad-badge">ANUNCIO DE PRUEBA (MODO DEMO)</div>
+      <div class="ad-banner">
+        <div class="ad-icon">📺</div>
+        <h2>Espacio Publicitario</h2>
+        <p>
+          En producción aquí se muestra el anuncio interactivo de <b>Adsgram</b> segmentado según el país del lector.
+        </p>
+      </div>
+      <div id="demo-ad-timer" class="ad-timer">Espera 5s...</div>
+      <button id="demo-ad-close" class="ad-close-btn" type="button" disabled>
+        Esperando...
+      </button>
+    </div>
+  </div>
+
+  <script src="/ads.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
